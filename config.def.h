@@ -1,12 +1,16 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 6;        /* gaps between windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "Terminus (TTF):size=13" };
+static const char *fonts[]          = { 
+	"Terminus (TTF):size=13:antialias=true", 
+	"monospace:size=10", 
+	"Material Design Icons Desktop:style=Regular:antialias=true:size=12",
+};
 static const char dmenufont[]       = "Terminus (TTF):size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -20,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "T", "", "", "", "", "" };
+static const char *tags[] = { "󰅬", "󰈹", "󰨞", "󰙯", "󰒱" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -41,8 +45,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	/* { "><>",      NULL },    * no layout function means floating behavior */
-	/* { "[M]",      monocle }, */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -91,8 +95,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-     /* TAGKEYS(                        XK_7,                      6)
+ /* TAGKEYS(                        XK_6,                      5)
+    TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8) */
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
