@@ -731,7 +731,7 @@ drawbar(Monitor *m)
 				urg & 1 << i);
 		x += w;
 	}
-	w = TEXTW(m->ltsymbol);
+	w = TEXTW(m->ltsymbol); /* For padding between tags and bar */
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
@@ -2024,7 +2024,7 @@ void
 updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "Lets Go \U000F08C7!");
+		strcpy(stext, " Lets Go \U000F08C7!");
 	drawbar(selmon);
 }
 
