@@ -35,8 +35,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Visual Studio Code", NULL, NULL,   3 << 8,       0,           -1 }, 
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Code",     NULL,       NULL,       1 << 2,       1,           -1 }, 
 };
 
 /* layout(s) */
@@ -48,8 +48,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	/* { "><>",      NULL },    no layout function means floating behavior */
+	/* { "[M]",      monocle }, */
 };
 
 /* key definitions */
@@ -61,7 +61,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/fish", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -75,7 +75,7 @@ static const char *dmenucmd[] = {
 	"-sf", col_gray4, 
 	NULL 
 };
-static const char *termcmd[]  = { "/bin/bash", NULL };
+static const char *termcmd[]  = { "/bin/fish", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,7 +93,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	/* { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, */
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
