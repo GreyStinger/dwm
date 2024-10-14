@@ -6,9 +6,9 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { 
-	"Terminus (TTF):size=13:antialias=true", 
-	"monospace:size=10", 
+static const char *fonts[]          = {
+	"Terminus (TTF):size=13:antialias=true",
+	"monospace:size=10",
 	"Material Design Icons Desktop:style=Regular:antialias=true:size=12",
 };
 static const char dmenufont[]       = "Terminus (TTF):size=13";
