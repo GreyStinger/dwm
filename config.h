@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <stddef.h>
+
 /* appearance */
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int gappx     = 2;        /* gaps between windows */
@@ -7,11 +9,10 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-	"Terminus (TTF):size=13:antialias=true",
+	"JetBrainsMono Nerd Font:size=11:antialias=true",
 	"monospace:size=10",
-	"Material Design Icons Desktop:style=Regular:antialias=true:size=12",
 };
-static const char dmenufont[]       = "Terminus (TTF):size=13";
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -28,12 +29,12 @@ static const char *colors[][3]      = {
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
-static const char *tags[] = { "󰅬", "󰈹", "󰨞", "󰙯", "󰒱" };
+static const char *tags[] = { "󰅬", "󰈹", "󰙯", "󰩹", "󰗅" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -67,25 +68,26 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/env zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { 
-	"dmenu_run", 
-	"-m", dmenumon, 
-	"-fn", dmenufont, 
-	"-nb", col_gray1, 
-	"-nf", col_gray3, 
-	"-sb", col_cyan, 
-	"-sf", col_gray4, 
-	NULL 
+static const char *dmenucmd[] = {
+	"dmenu_run",
+	"-m", dmenumon,
+	"-fn", dmenufont,
+	"-nb", col_gray1,
+	"-nf", col_gray3,
+	"-sb", col_cyan,
+	"-sf", col_gray4,
+	NULL
 };
-static const char *termcmd[]  = { "/bin/bash", NULL };
+static const char *termcmd[]  = { "/usr/bin/env zsh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -100,10 +102,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	/*{ MODKEY,                       XK_space,  setlayout,      {0} },*/
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	/*{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },*/
+	/*{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },*/
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
@@ -113,10 +115,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
- /* TAGKEYS(                        XK_6,                      5)
-    TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8) */
+	/*TAGKEYS(                        XK_6,                      5)*/
+	/*TAGKEYS(                        XK_7,                      6)*/
+	/*TAGKEYS(                        XK_8,                      7)*/
+	/*TAGKEYS(                        XK_9,                      8)*/
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
