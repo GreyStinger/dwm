@@ -47,7 +47,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "󰅬", "󰈹", "󰙯", "4", "5", "6", "7", "8", "󰗅" };
+static const char *tags[] = { "󰅬", "󰈹", "3", "4", "5", "6", "7", "8", "󰗅" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -97,7 +97,7 @@ static const char *dmenucmd[] = {
 	"-sf", catppuccin_s_fg,
 	NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *screenshotcmd[]  = { "flameshot", "gui", NULL };
 
 static const Key keys[] = {
