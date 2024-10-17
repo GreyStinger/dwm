@@ -26,13 +26,19 @@ static const char col_cyan[]        = "#005577";
 static const char col_blue_gray[]   = "#387478";
 static const char col_dp[]          = "#460C68";
 static const char col_lp[]          = "#CB1C8D";
+static const char catppuccin_n_fg[] = "#cdd6f4";
+static const char catppuccin_n_bg[] = "#1e1e2e";
+static const char catppuccin_s_fg[] = "#1e1e2e";
+static const char catppuccin_s_bg[] = "#89dceb";
 static const unsigned int baralpha_sel = 0x70;
 static const unsigned int baralpha = 0x00;
 static const unsigned int borderalpha = 0x00;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_blue_gray, col_lp },
+	/*[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },*/
+	/*[SchemeSel]  = { col_gray4, col_blue_gray, col_lp },*/
+	[SchemeNorm] = { catppuccin_n_fg, catppuccin_n_bg, col_gray2 },
+	[SchemeSel]  = { catppuccin_s_fg, catppuccin_s_bg, col_lp },
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg           	border*/
@@ -78,15 +84,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/usr/bin/env", "zsh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2]  = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char num_lines[2] = "6";
 static const char *dmenucmd[] = {
 	"dmenu_run",
 	"-m", dmenumon,
+	"-l", num_lines,
 	"-fn", dmenufont,
-	"-nb", col_gray1,
-	"-nf", col_gray3,
-	"-sb", col_blue_gray,
-	"-sf", col_gray4,
+	"-nb", catppuccin_n_bg,
+	"-nf", catppuccin_n_fg,
+	"-sb", catppuccin_s_bg,
+	"-sf", catppuccin_s_fg,
 	NULL
 };
 static const char *termcmd[]  = { "alacritty", NULL };
@@ -100,8 +108,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ 0,                            0x0000ff61,spawn,          {.v = screenshotcmd } },
