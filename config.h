@@ -97,7 +97,7 @@ static const char *dmenucmd[] = {
 	"-sf", catppuccin_s_fg,
 	NULL
 };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
 static const char *screenshotcmd[]  = { "flameshot", "gui", NULL };
 
 static const Key keys[] = {
